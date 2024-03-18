@@ -2,6 +2,7 @@ from CoreConnect import rpc
 from CryptoConnect import getTopCrypto
 import tkinter as tk
 from datetime import datetime, timedelta
+
 import threading
 
 # Create the Tkinter window
@@ -59,16 +60,31 @@ def getTopCoins(topCoins):
 def displayTopCoin():
     global start_time
 
-    # Clear previous labels
-    for info in top_info_frame.winfo_children():
-        info.destroy()
 
     # Update coin information
     def updateCoinInfo():
+        # Clear previous labels
+        for widget in top_info_frame.winfo_children():
+            widget.destroy()
+
+        # Get the latest top coins data
         top_coins = getTopCoins(getTopCrypto())
-        for index, coin in enumerate(top_coins):
-            coinLabel = tk.Label(top_info_frame, text=f'{coin["name"]}: ${coin["price"]}', fg='white', bg='black')
-            coinLabel.grid(row=index, column=0, sticky='w', padx=10, pady=5)
+
+        # Set a starting grid
+        starting_row = 0
+
+        # Update existing labels or create new ones with the latest data
+        for coin_index, coin in enumerate(top_coins):
+            # Check if the label already exists in the specified row
+            coin_label = top_info_frame.grid_slaves(row=starting_row + coin_index, column=0)
+
+            if coin_label:  # Label already exists
+                # Configure the existing label with the latest data
+                coin_label[0].config(text=f'{coin["name"]}: ${coin["price"]}')
+            else:  # Label does not exist, create a new one
+                # Create a new label for each coin
+                coin_label = tk.Label(top_info_frame, text=f'{coin["name"]}: ${coin["price"]}', fg='white', bg='black')
+                coin_label.grid(row=starting_row + coin_index, column=0, sticky='w', padx=10, pady=5)
 
     # Update refresh timer
     def refreshTimer():

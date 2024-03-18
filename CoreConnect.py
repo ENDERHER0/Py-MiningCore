@@ -19,4 +19,4 @@ def rpc(method, params=[]):
     return requests.post(NODE_URL, auth=(NODE_USER, NODE_PASSWORD), data=payload).json()['result']
 
 
-print(rpc('uptime'))
+print(rpc('getblockcount'))

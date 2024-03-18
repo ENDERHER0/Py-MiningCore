@@ -15,6 +15,7 @@ def getTop10Coins():
         data = response.json()
         # Extracting only the required information (name and current price) for each coin
         top_coins = [{"name": coin["name"], "current_price": coin["current_price"]} for coin in data]
+        print("Coins Called")
         return top_coins
     else:
         print(f"Failed to fetch data: {response.status_code}")
@@ -30,7 +31,7 @@ def getTopCrypto():
             coinName = coin['name']
             coinPrice = coin['current_price']
             currentTopCoins.append({"name": coinName, "price": coinPrice})
-        print("Coins Called")
+
         return currentTopCoins
     else:
         missingResponse = [{'name': "missing"}], [{'price': "0.00"}]
