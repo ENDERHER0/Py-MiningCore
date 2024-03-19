@@ -1,8 +1,8 @@
 Welcome to my GitHub repository! This project is a work in progress and is designed to provide a comprehensive view of Bitcoin Core statistics, with a focus on current and predicted prices.
 
-The program includes a state-of-the-art viewer for Bitcoin Core statistics, which is still under development but will eventually allow users to easily navigate and analyze data. In addition, 
+The program includes a state-of-the-art viewer for Bitcoin Core statistics, which is still under development but will eventually allow users to easily navigate and analyze data. 
 
-the program will automatically update a CSV sheet every 5 minutes with the latest prices, ensuring that users have access to the most up-to-date information.
+In addition, the program will automatically update a CSV sheet every 5 minutes with the latest prices, ensuring that users have access to the most up-to-date information.
 
 But that's not all - the program is also being designed to include an AI that will use the data from the CSV sheet to predict future Bitcoin prices. 
 
